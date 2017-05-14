@@ -1,0 +1,125 @@
+
+
+import java.util.Scanner;
+public class Binary {
+	
+	public static void main(String[] args){
+		Scanner input = new Scanner(System.in);	
+		Scanner sInput = new Scanner(System.in);
+		int answer;
+		int number = 0;
+		System.out.println("Select your choice by number:\n");
+		System.out.print("#1 : Would you like to convert a binary to a decimal ");
+		System.out.print("and a binary to a hex? \n\n");
+		
+		System.out.print("#2 : or would you like to convert a decimal to binary ");
+		System.out.print("and a decimal to a hex? \n\n");
+
+		answer = input.nextInt();
+			
+			if(answer == 1){
+				System.out.println("Enter a string: ");
+				String s = sInput.nextLine();
+				//System.out.println(s);
+				System.out.print("The binary " + "'" + s + "'" + " converted to decimal is " + binaryToDecimal(s) + "\n");
+				//System.out.print("The binary " + "'" + s + "'" + " converted to hex is " + binaryToHex(s) + "\n");
+			}
+			else if (answer == 2){
+				System.out.println("Enter a decimal value: ");
+				number = input.nextInt();
+				//System.out.println(number);
+				//System.out.print("The decimal " + number + " converted to binary is " + decimalToBinary(number));
+				System.out.print("The decimal converted to hex is " + decimalToHex(number));
+			}
+			else
+				System.out.println("Error: Answer must be 1 or 2!");
+	}
+	
+	
+	public static int binaryToDecimal(String binaryString){
+		
+		int number = binaryString.charAt(0) - '0';
+		
+		for (int i = 1; i < binaryString.length(); i++) {
+			number = number * 2 + binaryString.charAt(i) - '0';
+			
+			    }
+		return number;
+	}
+
+	public static String binaryToHex(String binaryVal){
+	String num = null;
+		
+		
+		return num;
+		
+	}
+	
+	
+	public static String decimalToBinary(int numVal){
+		String myString = new String();
+		while (numVal > 0) {
+			int number = numVal % 2;
+		    myString += number;
+		    numVal /= 2;
+		    }
+	//new string to hold contents of reversed string
+	String newString = new String();	     
+	//reverse the string to put in correct order
+	  for (int i = myString.length() - 1; i >= 0; i--) {
+		      char x = myString.charAt(i);
+		      newString += x;
+		   		}
+			return newString;
+	}
+	
+	
+	public static String decimalToHex(int numVal){
+		
+		String hex = "";
+		
+		//System.out.println(number);
+		int remainder;
+		
+		
+		do
+			
+		{
+		if (numVal > 16){
+			hex += numVal / 16;
+		}
+		remainder = numVal % 16;
+		if (remainder < 10)
+		{
+		hex = remainder + hex;
+		}
+		else if (remainder == 10)
+		{
+		hex = hex + "A";
+		}
+		else if (remainder == 11)
+		{
+		hex = hex + "B";
+		}
+		else if (remainder == 12)
+		{
+		hex = hex + "C";	
+		}
+		else if (remainder == 13)
+		{
+		hex = hex + "D"; 	
+		}
+		else if (remainder == 14)
+		{
+		hex = hex + "E";	
+		}
+		else if (remainder == 15)
+		{
+		hex = hex + "F";	
+		}
+			
+		}while (numVal < 16);
+		
+	return hex;
+	}
+}	
